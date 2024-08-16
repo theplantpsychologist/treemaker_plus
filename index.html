@@ -1,0 +1,278 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: red;
+            z-index: 100;
+        }
+        #myCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        #hidden_toolbar,#toolbar{
+            position: fixed; 
+            top: 50%; 
+            left: 0; 
+            transform: translateY(-50%);
+            background-color: yellow;
+            z-index: 10;
+            border-radius: 15px;
+            width: 200px; 
+            height: 400px; 
+        }
+        #hidden_toolbar{
+            width: 50px; 
+            height: 50px; 
+        }
+        #hidden_inspector,#inspector{
+            position: fixed; 
+            top: 50%; 
+            right: 0; 
+            transform: translateY(-50%);
+            background-color: yellow;
+            z-index: 10;
+            border-radius: 15px;
+            width: 200px; 
+            height: 400px; 
+        }
+        #hidden_inspector{
+            width: 50px; 
+            height: 50px; 
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>Treemaker Plus</h1>
+        <button onclick="openWorkspace()">open workspace</button>
+        <button onclick="exportWorkspace()">export workspace</button>
+    </div>
+    <script>
+        function openWorkspace(){
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.addEventListener('change', handleFileUpload);
+            input.click();
+        }
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const contents = e.target.result;
+                const data = JSON.parse(contents);
+                // Process the data from the JSON file
+                console.log(data);
+            };
+            reader.readAsText(file);
+        }
+        const example = {
+            "cp": {
+                "vertices": [
+                    {"x":0,"y":0},
+                    {"x":100,"y":0},
+                    {"x":100,"y":100},
+                    {"x":0,"y":100},
+                ],
+                "edges": [
+                    {"v1":0,"v2":1,"mv":"M"},
+                    {"v1":1,"v2":2,"mv":"V"},
+                    {"v1":2,"v2":3,"mv":"E"},
+                    {"v1":3,"v2":0,"mv":"A"},
+                ]
+            }
+        }
+        function exportWorkspace(){
+            const data = example;
+            const json = JSON.stringify(data);
+            const blob = new Blob([json], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'workspace.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+
+    <div id="toolbar">
+        <input type="radio" name="mv" value="M"> M
+        <input type="radio" name="mv" value="V"> V
+        <input type="radio" name="mv" value="E"> E
+        <input type="radio" name="mv" value="A"> A
+        <button>line tool</button>
+        <button>rabbit ear</button>
+        <button>copy</button>
+        <button>pan and scale</button>
+        <br><br>
+        <button onclick="toggleToolbar()">Toggle Sidebar</button>
+    </div>
+    <div id="hidden_toolbar" style="display: none;">
+        <button onclick="toggleToolbar()">></button>
+    </div>
+
+    <div id="inspector">
+        <p>inspector</p>
+        <button onclick="toggleInspector()">Toggle inspector</button>
+    </div>
+    <div id="hidden_inspector" style="display:none">
+        <button onclick="toggleInspector()"><</button>
+    </div>
+    <script>
+        const toolbar = document.getElementById('toolbar');
+        const hidden_toolbar = document.getElementById('hidden_toolbar');
+        // const toggleButton = document.getElementById('toggleButton');
+        function toggleToolbar(){
+            toolbar.style.display = toolbar.style.display === 'none' ? 'block' : 'none';
+            hidden_toolbar.style.display = hidden_toolbar.style.display === 'none' ? 'block' : 'none';
+        }
+        const inspector = document.getElementById('inspector');
+        const hidden_inspector = document.getElementById('hidden_inspector');
+        function toggleInspector(){
+            inspector.style.display = inspector.style.display === 'none' ? 'block' : 'none';
+            hidden_inspector.style.display = hidden_inspector.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+
+    <canvas id="myCanvas"></canvas>
+    <script src="paper-core.js"></script>
+    <script src="origami.js"></script>
+    <script src="main.js"></script>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        paper.setup(canvas)
+
+        const COLORS = { //todo: make this part of a config.json file
+            "M":"#ff0000",
+            "V":"#0000ff",
+            "E":"#000000",
+            "A":"#008080",
+            "point":"#000000",
+            "circle":"#070707",
+        }
+        
+        function renderTree(tree){
+            paper.project.clear()
+            tree.getNodes()
+            const square = new paper.Path.Rectangle(new paper.Rectangle(new paper.Point(window.innerWidth/2 - 250, window.innerHeight/2 - 250), new paper.Size(500, 500)));
+            square.strokeColor = 'black';
+            square.strokeWidth = 2
+            square.fillColor = 'transparent';
+            //draw vertices and circles. Later, draw rivers too, refer to circle jig
+            function renderx(x){
+                //Convert locations from the unit square to the canvas square
+                return 500*x + window.innerWidth/2 - 250
+            }
+            function rendery(y){
+                return 500*y + window.innerHeight/2 - 250
+            }
+            for(const node of tree.nodes){
+                node.point = new paper.Point(renderx(node.x), rendery(node.y))
+            }
+            function renderNode(node){
+                const vertex = new paper.Path.Circle(node.point, 3);
+                vertex.fillColor = COLORS['point'];
+                if (node.children.length==0){
+                    return
+                }
+                for(i=0;i<node.edgeLengths.length;i++){
+                    const line = new paper.Path.Line(node.point, node.children[i].point);
+                    line.strokeColor = COLORS["A"];
+                    line.strokeWidth = 1;
+                    if (node.children[i].edgeLengths.length == 0){
+                        console.log("creating circle")
+                        const circle = new paper.Path.Circle(node.children[i].point, node.edgeLengths[i]*window.tree.scale*500);
+                        circle.strokeColor = COLORS["circle"];
+                        circle.strokeWidth = 1;
+                        circle.fillColor = 'transparent';
+                    }
+                    renderNode(node.children[i]);
+                }
+            }
+            renderNode(tree.root)
+        }
+
+        var dragging = false
+        var mouseX
+        var mouseY
+
+        var canvasX = 300
+        var canvasY = 200
+        var scale = 700
+        window.selectedObject = null
+
+
+        function onMouseDown(event) {
+            console.log("click")
+            dragging = true
+            function unrenderx(x){
+                //Convert locations from the canvas to the unit square
+                return (x - window.innerWidth/2 + 250)/500
+            }
+            function unrendery(y){
+                return (y - window.innerHeight/2 + 250)/500
+            }
+            mouseX = unrenderx(event.x)
+            mouseY = unrendery(event.y)
+            for(const node of window.tree.nodes){
+                if(Math.abs(node.x - mouseX) < 0.05 && Math.abs(node.y - mouseY) < 0.05){
+                    console.log("changing selected object")
+                    window.selectedObject = node
+                    renderTree(window.tree)
+                    return
+                }
+            }
+            if(mouseX>=0 && mouseX<=1 && mouseY>=0 && mouseY<=1 && window.selectedObject instanceof Node){
+                window.selectedObject.addChild(new Node(window.selectedObject,mouseX,mouseY),1)
+                console.log("tree",window.tree)
+                renderTree(window.tree)
+                return
+            }
+        }
+        function onMouseUp(event){
+            console.log("unclick")
+            dragging = false
+            canvasX = canvasX + event.x - mouseX
+            canvasY = canvasY + event.y - mouseY
+        }
+        function onMouseDrag(event){
+            if(dragging){
+                console.log("drag")
+                // paper.project.clear()
+                // render(canvasX+event.x-mouseX,canvasY+event.y-mouseY,scale)
+            }
+        }
+        function resizeCanvas(){
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            paper.setup(canvas)
+            renderTree(window.tree)
+        };
+        // Attach the event listener to the whole body for demonstration purposes
+        document.body.addEventListener('mousedown', onMouseDown);
+        document.body.addEventListener('mouseup', onMouseUp);
+        document.body.addEventListener('mousemove', onMouseDrag);
+        window.addEventListener('resize', resizeCanvas);
+        document.addEventListener('DOMContentLoaded', function() {
+            window.tree = new Tree();
+            renderTree(window.tree)
+            window.selectedObject = window.tree.root
+        });
+    </script>
+</body>
+</html>
