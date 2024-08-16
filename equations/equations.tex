@@ -151,8 +151,7 @@ Hex pleating is essentially the same as bp, except instead of the grid size bein
 \end{equation}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\textwidth]{hex grid.png}
-    \label{fig:hex grid}\caption{A plot of the term in the hp objective function that ``encourages'' vertices to grid points: $\left[\cos(
+    \includegraphics[width=0.7\textwidth]{hex grid.png}\label{fig:hex grid}\caption{A plot of the term in the hp objective function that ``encourages'' vertices to grid points: $\left[\cos(
         \frac{\pi}{\sigma}(u_{i_y}+\frac{u_{i_x}}{\sqrt{3}})
     ) \cos(
         \frac{\pi}{\sigma}(u_{i_y}-\frac{u_{i_x}}{\sqrt{3}})
@@ -165,28 +164,37 @@ Theoretically, there may be an objective function that moves vertices to ``nice'
 \section{Design pipeline}
 The dream is a software that given a tree (perhaps with additional conditions like symmetry or specific nodes fixed to the paper edge), will be able to spit out a full crease pattern to be folded in bp, hp, or 22.5. I propose something like the following:
 
-First, run the tree some $N$ times with randomized initial positions (and maybe also randomized hyperparameters) using the circle packing constraint (\ref{eq:circle}) and objective function $-\sigma$. Generally a good solution in bp/hp/22.5 will be close to a good solution in circle packing, and running multiple times with circle packing (the computationally easiest) increases the chances of finding better local optima. 
+First, run the tree some $N$ times with randomized initial positions using the circle packing constraint (\ref{eq:circle}) and objective function $-\sigma$. Generally a good solution in bp/hp/22.5 will be close to a good solution in circle packing, and running multiple times with circle packing (the computationally easiest) increases the chances of finding better local optima. 
 
 Then, for each of the best $n$ unique results, use the circle packed positions as initial positions for the bp/hp/22.5 solver. Run the solver with the corresponding constraint equations and objective functions. Finally, display the options for the user to choose from. (Note: then constructing the cp will be a whole other issue, mainly because there may be empty space to fill.)
 
 \section{Preliminary results}
-Below are the best 6 out of a run of 70 solutions generated with circle packing, and then converted into the respective bp, hp, and 22.5 (using the normal octagon packing equation). All used a tree with four flaps of length 3, three flaps of length 6, and two flaps of length 9. Hyperparameters are: $\alpha=100$, $C_1=1$, $C_2=1$, $b=0.2$, and $k=1$. The solver is written in python, using the scipy library. Runtimes were within 20s for each of the 4 runs.
+Below are the best 6 out of a runs of 70 solutions each, first generated with circle packing and then converting the best results into the respective bp, hp, and 22.5. All used a tree with four flaps of length 3, three flaps of length 6, and two flaps of length 9. Hyperparameters are: $\alpha=100$, $C_1=1$, $C_2=1$, $b=0.2$, and $k=1$. The solver is written in python, using the scipy library. Runtimes were within 20s for each of the 4 runs.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{circle packings2.png}\label{fig:circles}\caption{Some circle packing solutions}
+    \includegraphics[width=0.9\textwidth]{circle packings2.png}\label{fig:circles}\caption{Some circle packing solutions}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{square packings 2.png}\label{fig:squares}\caption{Some square packing solutions}
+    \includegraphics[width=0.9\textwidth]{hex packings 2.png}\label{fig:hexagons}\caption{Some hex packing solutions.}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{hex packings 2.png}\label{fig:hexagons}\caption{Some hex packing solutions.}
+    \includegraphics[width=0.9\textwidth]{square packings 2.png}\label{fig:squares}\caption{Some square packing solutions}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{octagon packings 2.png}\label{fig:octagon packings}\caption{Some octagon packing solutions}
+    \includegraphics[width=0.9\textwidth]{square packings pythas.png}\label{fig:squares pythas}\caption{Some square packing solutions that allow pythagorean stretches. Some solutions have off-grid vertices, but a few don't.}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{octagon packings 2.png}\label{fig:octagon packings}\caption{Some octagon packing solutions using the standard octagon packing constraint.}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{octagon packings polar.png}\label{fig:octagon packings polar}\caption{Some octagon packing solutions using the polar constraint (\ref{eq:polar}) with $b=0.1$ and $k=1$ to encourage active paths to lie on 45 degree axial lines.}
 \end{figure}
 
 % --------------------------------------------------------------

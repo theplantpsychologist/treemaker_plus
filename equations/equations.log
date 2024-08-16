@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.25)  16 AUG 2024 14:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.25)  16 AUG 2024 15:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -261,37 +261,47 @@ Package pdftex.def Info: hex grid.png  used on input line 154.
 <circle packings2.png, id=31, 1190.4475pt x 767.86874pt>
 File: circle packings2.png Graphic file (type png)
 <use circle packings2.png>
-Package pdftex.def Info: circle packings2.png  used on input line 177.
-(pdftex.def)             Requested size: 375.80544pt x 242.39546pt.
-<square packings 2.png, id=32, 1203.49625pt x 774.895pt>
-File: square packings 2.png Graphic file (type png)
-<use square packings 2.png>
-Package pdftex.def Info: square packings 2.png  used on input line 181.
-(pdftex.def)             Requested size: 375.80544pt x 241.9649pt.
-<hex packings 2.png, id=33, 1198.4775pt x 765.86125pt>
+Package pdftex.def Info: circle packings2.png  used on input line 176.
+(pdftex.def)             Requested size: 422.77664pt x 272.6949pt.
+<hex packings 2.png, id=32, 1198.4775pt x 765.86125pt>
 File: hex packings 2.png Graphic file (type png)
 <use hex packings 2.png>
-Package pdftex.def Info: hex packings 2.png  used on input line 185.
-(pdftex.def)             Requested size: 375.80544pt x 240.14908pt.
-<octagon packings 2.png, id=34, 1191.45125pt x 760.8425pt>
+Package pdftex.def Info: hex packings 2.png  used on input line 180.
+(pdftex.def)             Requested size: 422.77664pt x 270.15895pt.
+<square packings 2.png, id=33, 1203.49625pt x 774.895pt>
+File: square packings 2.png Graphic file (type png)
+<use square packings 2.png>
+Package pdftex.def Info: square packings 2.png  used on input line 184.
+(pdftex.def)             Requested size: 422.77664pt x 272.21053pt.
+<square packings pythas.png, id=34, 1211.52625pt x 760.8425pt>
+File: square packings pythas.png Graphic file (type png)
+<use square packings pythas.png>
+Package pdftex.def Info: square packings pythas.png  used on input line 188.
+(pdftex.def)             Requested size: 422.77664pt x 265.50941pt.
+<octagon packings 2.png, id=35, 1191.45125pt x 760.8425pt>
 File: octagon packings 2.png Graphic file (type png)
 <use octagon packings 2.png>
-Package pdftex.def Info: octagon packings 2.png  used on input line 189.
-(pdftex.def)             Requested size: 375.80544pt x 239.9801pt.
- [5] [6 <./circle packings2.png> <./square packings 2.png>] [7 <./hex packings 2.png> <./octagon packings 2.png>] (./equations.aux) ) 
+Package pdftex.def Info: octagon packings 2.png  used on input line 193.
+(pdftex.def)             Requested size: 422.77664pt x 269.97908pt.
+<octagon packings polar.png, id=36, 1198.4775pt x 752.8125pt>
+File: octagon packings polar.png Graphic file (type png)
+<use octagon packings polar.png>
+Package pdftex.def Info: octagon packings polar.png  used on input line 197.
+(pdftex.def)             Requested size: 422.77664pt x 265.55597pt.
+ [5] [6 <./circle packings2.png> <./hex packings 2.png>] [7 <./square packings 2.png> <./square packings pythas.png>] [8 <./octagon packings 2.png> <./octagon packings polar.png>] (./equations.aux) ) 
 Here is how much of TeX's memory you used:
- 4642 strings out of 478268
- 75845 string characters out of 5846347
+ 4658 strings out of 478268
+ 76323 string characters out of 5846347
  376974 words of memory out of 5000000
- 22822 multiletter control sequences out of 15000+600000
+ 22836 multiletter control sequences out of 15000+600000
  477715 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,9n,77p,879b,341s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 67i,9n,77p,879b,339s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on equations.pdf (7 pages, 5500477 bytes).
+Output written on equations.pdf (8 pages, 7446919 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

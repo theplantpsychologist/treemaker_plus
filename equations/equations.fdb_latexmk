@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1723834038 "/Users/brandonwong/Desktop/treemaker plus/treemaker_plus/equations/equations.tex" "equations.pdf" "equations" 1723834048
-  "/Users/brandonwong/Desktop/treemaker plus/treemaker_plus/equations/equations.tex" 1723834038 12823 6653ce710aff1609568603232d05ff0c ""
+["pdflatex"] 1723836118 "/Users/brandonwong/Desktop/treemaker plus/treemaker_plus/equations/equations.tex" "equations.pdf" "equations" 1723836131
+  "/Users/brandonwong/Desktop/treemaker plus/treemaker_plus/equations/equations.tex" 1723836118 13389 dff213b56c333548febcb97182528316 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -64,13 +64,15 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1674700007 2826445 8613b279640705bc1f2826d9b16cf9c0 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "circle packings2.png" 1723833885 1347249 a145b3fd1ae0d458c11a3e447b028844 ""
-  "equations.aux" 1723834048 3153 8706a026c2e5ea83f5e01ccae38cb9b9 "pdflatex"
-  "equations.tex" 1723834038 12823 6653ce710aff1609568603232d05ff0c ""
+  "equations.aux" 1723836131 3888 bea6b5cc5308e3ffd2924f56d7d39b6c "pdflatex"
+  "equations.tex" 1723836118 13389 dff213b56c333548febcb97182528316 ""
   "hex grid.png" 1723777271 1152283 fb78376d7c22d07c3ef538677ee738dd ""
   "hex packings 2.png" 1723833885 3545834 9f63f14df8cbb88fcd4774d639f4723f ""
   "octagon packings 2.png" 1723833885 2080851 8baffb5b004922f592799e18ed3b47b5 ""
+  "octagon packings polar.png" 1723834261 2097982 31b0eaef6d43f4d9a0e14c3a620a8e69 ""
   "octagons.png" 1723771897 115197 ecb3c2caf92821770551d642f9f72c26 ""
   "square packings 2.png" 1723833885 2151287 596e7a2e2f71822cfaab2de4a0dc6b2f ""
+  "square packings pythas.png" 1723834261 2364055 6285ae287a424621acbade23dc36a6e2 ""
   (generated)
   "equations.aux"
   "equations.log"

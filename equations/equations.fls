@@ -324,21 +324,31 @@ INPUT ./circle packings2.png
 INPUT circle packings2.png
 INPUT ./circle packings2.png
 INPUT ./circle packings2.png
-INPUT ./square packings 2.png
-INPUT ./square packings 2.png
-INPUT square packings 2.png
-INPUT ./square packings 2.png
-INPUT ./square packings 2.png
 INPUT ./hex packings 2.png
 INPUT ./hex packings 2.png
 INPUT hex packings 2.png
 INPUT ./hex packings 2.png
 INPUT ./hex packings 2.png
+INPUT ./square packings 2.png
+INPUT ./square packings 2.png
+INPUT square packings 2.png
+INPUT ./square packings 2.png
+INPUT ./square packings 2.png
+INPUT ./square packings pythas.png
+INPUT ./square packings pythas.png
+INPUT square packings pythas.png
+INPUT ./square packings pythas.png
+INPUT ./square packings pythas.png
 INPUT ./octagon packings 2.png
 INPUT ./octagon packings 2.png
 INPUT octagon packings 2.png
 INPUT ./octagon packings 2.png
 INPUT ./octagon packings 2.png
+INPUT ./octagon packings polar.png
+INPUT ./octagon packings polar.png
+INPUT octagon packings polar.png
+INPUT ./octagon packings polar.png
+INPUT ./octagon packings polar.png
 INPUT equations.aux
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
