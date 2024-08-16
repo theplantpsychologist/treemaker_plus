@@ -37,14 +37,6 @@ class Tree{
         this.nodes = nodes;
         return nodes;
     }
-    // getNodes(){
-    //     this.nodes = [this.root]
-    //     function returnSelfAndChildren(node){
-    //         return [node].concat(node.children.flatMap(returnSelfAndChildren));
-    //     }
-    //     this.nodes = this.nodes.flatMap(returnSelfAndChildren);
-    //     return this.nodes
-    // }
     // Helper method to find the path from root to a given node
     findPath(root, targetNode, path = []) {
         if (root === null) return false;
